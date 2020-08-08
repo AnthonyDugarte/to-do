@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class LineTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "Line attributes must not be empty" do
+    line = Line.new
+
+    assert line.invalid?
+    assert line.errors[:name].any?
+  end
 end
