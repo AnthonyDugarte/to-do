@@ -1,6 +1,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
+html {
+    @apply min-h-screen flex;
+}
 
 .base-input-box {
     @apply bg-gray-200

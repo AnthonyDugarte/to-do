@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Lines</h1>
-
-<%= render @lines %>
-
-<br>
-
 <%= link_to 'New Line', new_line_path %>
+
+
+<div class="flex flex-1 overflow-x-auto">
+<%= render @lines %>
+</div>
