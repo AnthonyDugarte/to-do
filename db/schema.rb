@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_213420) do
+ActiveRecord::Schema.define(version: 2020_08_07_213811) do
 
   create_table "lines", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2020_08_07_213420) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "line_id", null: false
+    t.index ["line_id"], name: "index_tasks_on_line_id"
   end
 
+  add_foreign_key "tasks", "lines"
 end

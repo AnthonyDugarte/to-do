@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class TasksTest < ApplicationSystemTestCase
   setup do
-    @task = tasks(:one)
+    @task = tasks(:do_tests)
   end
 
   test "visiting the index" do
@@ -16,6 +16,7 @@ class TasksTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
+    fill_in "Line", with: @task.line_id
     click_on "Create Task"
 
     assert_text "Task was successfully created"
@@ -28,6 +29,7 @@ class TasksTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
+    fill_in "Line", with: @task.line_id
     click_on "Update Task"
 
     assert_text "Task was successfully updated"

@@ -1,0 +1,17 @@
+<div class="rounded shadow-lg my-6">
+    <div class="px-6 py-4">
+      <%= line.name %>
+    </div>
+
+    <div class="px-6 py-4">
+      <%= link_to 'Show', line %> |
+      <%= link_to 'Edit', edit_line_path(line) %> |
+      <%= link_to 'Destroy', line, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+    <div class="px-6 py-4">
+      <%= render line.tasks %>
+    </div>
+
+    <%= link_to 'New Task', new_task_path(task: {line_id: line}) %>
+</div>

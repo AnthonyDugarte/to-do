@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.preload(:line).all
   end
 
   # GET /tasks/1
@@ -14,7 +14,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = Task.new(optional_task_params)
   end
 
   # GET /tasks/1/edit
@@ -67,8 +67,16 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
 
+    def optional_task_params
+      begin
+        task_params
+      rescue ActionController::ParameterMissing
+        ActionController::Parameters.new
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description)
+      params.require(:task).permit(:title, :description, :line_id)
     end
 end

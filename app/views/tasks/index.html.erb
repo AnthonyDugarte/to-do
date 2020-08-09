@@ -1,22 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="text-4xl">Tasks</h1>
+<h1>Tasks</h1>
 
-<% @tasks.each do |task| %>
-  <div class="rounded shadow-lg my-6">
-
-    <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2"><%= task.title %></div>
-      <p class="text-gray-700 text-base"><%= task.description %></p>
-    </div>
-
-    <div class="px-6 py-4">
-      <%= link_to 'Show', task %> |
-      <%= link_to 'Edit', edit_task_path(task) %> |
-      <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  </div>
-<% end %>
+<%= render @tasks %>
 
 <br>
 

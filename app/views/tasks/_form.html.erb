@@ -13,12 +13,17 @@
 
   <div class="mb-6 field">
     <%= form.label :title, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= form.text_field :title, class: "base-input-box" %>
+    <%= form.text_field :title, placeholder: 'what is it about?', class: "base-input-box" %>
   </div>
 
   <div class="mb-6 field">
     <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= form.text_area :description, class: "base-input-box" %>
+    <%= form.text_area :description, placeholder: 'What else there is to know about it?', class: "base-input-box" %>
+  </div>
+
+  <div class="mb-6 field">
+    <%= form.label :line_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.collection_select :line_id, Line.all, :id, :name, {}, class: "base-input-box" %>
   </div>
 
   <div class="mb-6 actions">

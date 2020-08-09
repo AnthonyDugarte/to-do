@@ -45,4 +45,12 @@ class LinesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to lines_url
   end
+
+  test "should destroy associated tasks" do
+    assert_difference('Task.count', -2) do
+      delete line_url(@line)
+    end
+
+    assert_redirected_to lines_url
+  end
 end
