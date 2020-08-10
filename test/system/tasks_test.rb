@@ -3,6 +3,7 @@ require "application_system_test_case"
 class TasksTest < ApplicationSystemTestCase
   setup do
     @task = tasks(:do_tests)
+    @line = lines(:to_do)
   end
 
   test "visiting the index" do
@@ -16,7 +17,20 @@ class TasksTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
-    fill_in "Line", with: @task.line_id
+    select @task.line.name, from: "Line"
+    click_on "Create Task"
+
+    assert_text "Task was successfully created"
+    click_on "Back"
+  end
+
+  test "Creating a Task for a line" do
+    visit url_for([@line, :tasks])
+
+    click_on "New Task"
+
+    fill_in "Description", with: @task.description
+    fill_in "Title", with: @task.title
     click_on "Create Task"
 
     assert_text "Task was successfully created"
@@ -29,7 +43,7 @@ class TasksTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
-    fill_in "Line", with: @task.line_id
+    select @task.line.name, from: "Line"
     click_on "Update Task"
 
     assert_text "Task was successfully updated"

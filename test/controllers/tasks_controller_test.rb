@@ -101,4 +101,12 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to tasks_url
   end
+
+  test "should destroy task associated to a lane" do
+    assert_difference('@line.tasks.count', -1) do
+      delete url_for([@line, @task])
+    end
+
+    assert_redirected_to url_for([@line, :tasks])
+  end
 end
