@@ -12,8 +12,8 @@
     </div>
 
     <div class="px-6 py-4 flex-1">
-      <%= render line.tasks %>
+      <%= render line.tasks, line: line %>
     </div>
 
-    <%= link_to 'New Task', new_task_path(task: {line_id: line}), class: "px-6 block bg-gray-200" %>
+    <%= link_to 'New Task', [:new, line, :task], class: "px-6 block bg-gray-200" %>
 </div>

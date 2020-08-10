@@ -1,4 +1,6 @@
-<%= form_with(model: task, local: true) do |form| %>
+<% line ||= nil %>
+
+<%= form_with(model: [line, task], local: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -21,10 +23,12 @@
     <%= form.text_area :description, placeholder: 'What else there is to know about it?', class: "base-input-box" %>
   </div>
 
-  <div class="mb-6 field">
-    <%= form.label :line_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= form.collection_select :line_id, Line.all, :id, :name, {}, class: "base-input-box" %>
-  </div>
+  <% if line.nil? %>
+    <div class="mb-6 field">
+      <%= form.label :line_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.collection_select :line_id, Line.all, :id, :name, {}, class: "base-input-box" %>
+    </div>
+  <% end %>
 
   <div class="mb-6 actions">
     <%= form.submit class: "cursor-pointer shadow bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>

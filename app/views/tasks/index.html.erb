@@ -2,8 +2,8 @@
 
 <h1>Tasks</h1>
 
-<%= render @tasks %>
+<%= render @tasks, line: @line %>
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', [:new, @line, :task] %>

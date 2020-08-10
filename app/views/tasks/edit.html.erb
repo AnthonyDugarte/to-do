@@ -1,8 +1,8 @@
 <h1>Editing Task</h1>
 
-<%= render 'form', task: @task %>
+<%= render 'form', task: @task, line: @line %>
 
 <div>
-    <%= link_to 'Show', @task %> |
-    <%= link_to 'Back', tasks_path %>
+    <%= link_to 'Show', [@line, @task] %> |
+    <%= link_to 'Back', [@line, :tasks] %>
 </div>

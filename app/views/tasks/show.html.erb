@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= render @task %>
+<%= render @task, line: @line %>
 
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Back', [@line, :tasks] %>
