@@ -1,0 +1,15 @@
+<div id="<%= yield :modal_id %>" class="modal" aria-hidden="true">
+  <div class="modal__overlay fixed inset-0 flex justify-center items-center" tabindex="-1" data-micromodal-close>
+    <div class="modal__container bg-white p-8 max-w-lg max-h-screen rounded overflow-y-auto box-border" role="dialog" aria-modal="true" aria-labelledby="<%= yield :modal_id %>-title">
+      <header class="modal__header flex justify-between items-center">
+        <div class="box-border" id="<%= yield :modal_id %>-title">
+          <%= yield :modal_title %>
+        </div>
+        <button class="modal__close border-0 bg-transparent" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <main class="my-8" id="<%= yield :modal_id %>-content">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+</div>
