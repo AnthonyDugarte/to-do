@@ -1,5 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 do_tests:
   title: Mauris dui tortor, posuere non
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ante nibh, pulvinar ac dictum vitae, lobortis iaculis eros. Aenean in.

@@ -1,24 +1,66 @@
-# README
+# Things
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To do things should always be finished so, this is an app to keep a track of them and maybe return to them later, sometime in the near or far feature.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+### Dependencies
 
-* System dependencies
+```bash
+yarn
+bundle install
+```
 
-* Configuration
+### Database creation
 
-* Database creation
+...
 
-* Database initialization
+### Database initialization
 
-* How to run the test suite
+...
 
-* Services (job queues, cache servers, search engines, etc.)
+### Load migrations
 
-* Deployment instructions
+```bash
+rails db:schema:load
+```
 
-* ...
+## Tests
+
+### Unitary and functional
+
+To run unitary and functional tests do:
+
+```bash
+rails test
+```
+
+### System tests
+
+To run system tests do:
+
+```bash
+rails test:system
+```
+
+### Services (job queues, cache servers, search engines, etc.)
+
+...
+
+### Deployment instructions
+
+...
+
+## Ruby version
+
+check [.ruby-version](.ruby-version) file.
+
+## Some documentation
+
+- [fixtures](https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html) (test's sample data)
+- [capybara](https://rubydoc.info/github/teamcapybara/capybara/master/Capybara) (testing)
+  - [assertions](https://rubydoc.info/github/teamcapybara/capybara/master/Capybara/Minitest/Assertions)
+- Active Record
+  - [Associations](https://guides.rubyonrails.org/association_basics.html)
+  - [Querying](https://guides.rubyonrails.org/active_record_querying.html)
+- [Js](https://guides.rubyonrails.org/working_with_javascript_in_rails.html) (in rails)
