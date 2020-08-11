@@ -14,11 +14,12 @@ class LinesTest < ApplicationSystemTestCase
     visit lines_url
     click_on "New Line"
 
-    fill_in "Name", with: @line.name
-    click_on "Create Line"
+    within("#modal-line-new") do
+      fill_in "Name", with: @line.name
+      click_on "Create Line"
+    end
 
-    assert_text "Line was successfully created"
-    click_on "Back"
+    assert_css("[data-model=\"#{@line.class.name}\"][data-id=\"#{Line.last.id}\"]")
   end
 
   test "updating a Line" do
@@ -28,16 +29,20 @@ class LinesTest < ApplicationSystemTestCase
     fill_in "Name", with: @line.name
     click_on "Update Line"
 
-    assert_text "Line was successfully updated"
-    click_on "Back"
+    assert_selector "[data-model=\"Line\"] [data-field=\"name\"]", text: @line.name, match: :first
   end
 
   test "destroying a Line" do
     visit lines_url
+
+    line_id = Line.first.id
+
+    assert_css("[data-model=\"#{@line.class.name}\"][data-id=\"#{line_id}\"]")
+
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Line was successfully destroyed"
+    assert_no_css("[data-model=\"#{@line.class.name}\"][data-id=\"#{line_id}\"]")
   end
 end

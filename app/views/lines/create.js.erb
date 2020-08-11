@@ -1,0 +1,8 @@
+lines = document.getElementById("lines-container")
+
+tmp_el = document.createElement("template")
+tmp_el.innerHTML = "<%= j render(@line) %>"
+
+lines.appendChild(tmp_el.content.firstElementChild)
+
+MicroModal.close("<%= model_modal_id Line.new %>")

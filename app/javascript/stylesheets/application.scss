@@ -37,6 +37,30 @@ a {
     }
 }
 
+.form__btn-submit {
+    @apply cursor-pointer
+        transition
+        duration-500
+        transform
+        shadow
+        bg-purple-500
+        text-white
+        font-bold
+        py-2
+        px-4
+        rounded;
+    
+    &:hover {
+        @apply scale-105
+            bg-purple-400;
+    }
+
+    &:focus {
+        @apply outline-none
+            shadow-outline;
+    }
+}
+
 h1 {
     @apply text-4xl my-6 font-bold;
 }
