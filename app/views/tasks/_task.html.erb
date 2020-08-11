@@ -1,17 +1,16 @@
 <% line ||= nil %>
 
-<div class="rounded shadow-lg">
+<div data-model="<%= task.class.name %>" data-id="<%= task.id %>" class="rounded shadow-lg">
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2"><%= task.title %></div>
-      
-    <div class="text-gray-700 text-base"><%= task.line.name %></div>
+    <div data-field="title" class="font-bold text-xl mb-2"><%= task.title %></div>
 
-    <p class="text-gray-700 text-base"><%= task.description %></p>
+    <div data-field="line_name" class="text-gray-700 text-base"><%= task.line.name %></div>
+
+    <p data-field="description" class="text-gray-700 text-base"><%= task.description %></p>
   </div>
 
   <div class="px-6 py-4">
-    <%= link_to 'Show', [line, task] %> |
-    <%= link_to 'Edit', [:edit, line, task] %> |
-    <%= link_to 'Destroy', [line, task], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit', [:edit, line, task], remote: true %> |
+    <%= link_to 'Destroy', [line, task], method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
   </div>
 </div>

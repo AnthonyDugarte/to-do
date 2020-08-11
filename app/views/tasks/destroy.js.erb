@@ -1,0 +1,5 @@
+el = document.querySelector(
+    "[data-model=\"<%= Task.name %>\"][data-id=\"<%= @task.id %>\"]"
+)
+
+if(el) el.remove()

@@ -4,7 +4,7 @@ line_modal = document.getElementById("modal-container")
     <h1>Editing Line</h1>
 <% end %>
 
-line_modal.innerHTML = "<%= j render(layout: "shared/modal", locals: {resource: @line}, &-> { render 'form', line: @line }) %>"
+line_modal.innerHTML = "<%= j render(layout: "shared/modal", locals: { resource: @line }, &-> { render 'form', line: @line }) %>"
 
 <% # TODO: move this to a helper %>
 MicroModal.show("<%= model_modal_id @line %>", microModalDefaultConfig)

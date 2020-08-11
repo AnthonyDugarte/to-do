@@ -1,0 +1,10 @@
+el = document.querySelector("[data-model=\"Task\"][data-id=\"<%= @task.id %>\"]")
+
+if(el) {
+    tmp_el = document.createElement("template")
+    tmp_el.innerHTML = "<%= j render(@task) %>"
+
+    el.parentElement.replaceChild(tmp_el.content.firstElementChild, el)
+}
+
+MicroModal.close("<%= model_modal_id @task %>")

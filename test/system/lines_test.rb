@@ -19,7 +19,7 @@ class LinesTest < ApplicationSystemTestCase
       click_on "Create Line"
     end
 
-    assert_css("[data-model=\"#{@line.class.name}\"][data-id=\"#{Line.last.id}\"]")
+    assert_css resource_selector(Line.last)
   end
 
   test "updating a Line" do
@@ -29,20 +29,18 @@ class LinesTest < ApplicationSystemTestCase
     fill_in "Name", with: @line.name
     click_on "Update Line"
 
-    assert_selector "[data-model=\"Line\"] [data-field=\"name\"]", text: @line.name, match: :first
+    assert_selector "#{resource_selector @line} [data-field=\"name\"]", text: @line.name, match: :first
   end
 
   test "destroying a Line" do
     visit lines_url
 
-    line_id = Line.first.id
-
-    assert_css("[data-model=\"#{@line.class.name}\"][data-id=\"#{line_id}\"]")
+    assert_css resource_selector(Line.first)
 
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_no_css("[data-model=\"#{@line.class.name}\"][data-id=\"#{line_id}\"]")
+    assert_no_css resource_selector(Line.first)
   end
 end

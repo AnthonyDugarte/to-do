@@ -2,8 +2,10 @@
 
 <h1>Tasks</h1>
 
-<%= render @tasks, line: @line %>
+<div data-container="<%= Task.name %>">
+    <%= render @tasks, line: @line %>
+</div>
 
 <br>
 
-<%= link_to 'New Task', [:new, @line, :task] %>
+<%= link_to 'New Task', [:new, @line, :task], remote: true %>

@@ -1,0 +1,8 @@
+tasks = document.querySelector("[data-model=\"<%= Line.name %>\"][data-id=\"<%= @line&.id %>\"] [data-container=\"<%= Task.name %>\"]") || document.querySelector("[data-container=\"<%= Task.name %>\"]")
+
+tmp_el = document.createElement("template")
+tmp_el.innerHTML = "<%= j render(@task) %>"
+
+tasks.appendChild(tmp_el.content.firstElementChild)
+
+MicroModal.close("<%= model_modal_id Task.new %>")

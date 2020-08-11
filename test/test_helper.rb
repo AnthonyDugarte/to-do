@@ -10,4 +10,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def resource_selector resource
+    "[data-model=\"#{resource.class.name}\"][data-id=\"#{resource.id}\"]"
+  end
 end

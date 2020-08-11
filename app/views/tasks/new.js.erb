@@ -1,0 +1,10 @@
+line_modal = document.getElementById("modal-container")
+
+<% content_for :modal_title do %>
+    <h1>New Task</h1>
+<% end %>
+
+line_modal.innerHTML = "<%= j render(layout: "shared/modal", locals: { resource: @task }, &-> { render 'form', task: @task, line: @line }) %>"
+
+<% # TODO: move this to a helper %>
+MicroModal.show("<%= model_modal_id @task %>", microModalDefaultConfig)
