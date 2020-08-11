@@ -9,7 +9,7 @@
 
 Task.delete_all
 
-25.times do 
+25.times do
     Task.create!(
         title: Faker::TvShows::BojackHorseman.tongue_twister,
         description: Faker::TvShows::BojackHorseman.quote,
