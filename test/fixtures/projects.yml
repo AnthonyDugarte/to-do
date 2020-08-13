@@ -1,6 +1,5 @@
-
-
+lapa:
   name: <%= Faker::Lorem.word %>
 
-two:
+grillo:
   name: <%= Faker::Lorem.word %>

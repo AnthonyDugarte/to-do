@@ -1,5 +1,19 @@
 to_do:
   name: to do
+  project: lapa
 
 doing:
   name: doing
+  project: grillo
+
+done:
+  name: done
+  project: lapa
+
+pending:
+  name: pending
+  project: grillo
+
+delegated:
+  name: delegated
+  project: grillo

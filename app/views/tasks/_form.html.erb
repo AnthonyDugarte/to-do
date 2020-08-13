@@ -1,6 +1,8 @@
 <% line ||= nil %>
+<% lines ||= [] %>
+<% project ||= nil %>
 
-<%= form_with(model: [line, task], remote: true) do |form| %>
+<%= form_with(model: [project, line, task], remote: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -26,7 +28,7 @@
   <% if line.nil? %>
     <div class="mb-6 field">
       <%= form.label :line_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.collection_select :line_id, Line.all, :id, :name, {}, class: "base-input-box" %>
+      <%= form.collection_select :line_id, lines, :id, :name, {}, class: "base-input-box" %>
     </div>
   <% end %>
 

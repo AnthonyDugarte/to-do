@@ -1,8 +1,8 @@
 <h1>Editing Line</h1>
 
-<%= render 'form', line: @line %>
+<%= render 'form', line: @line, project: @project %>
 
 <div>
-    <%= link_to 'Show', @line %> | 
-    <%= link_to 'Back', lines_path %>
+    <%= link_to 'Show', [@project, @line] %> | 
+    <%= link_to 'Back', [@project, :lines] %>
 </div>

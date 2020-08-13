@@ -1,9 +1,24 @@
 do_tests:
-  title: Mauris dui tortor, posuere non
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ante nibh, pulvinar ac dictum vitae, lobortis iaculis eros. Aenean in.
+  title: <%= Faker::Lorem.words number: 5 %>
+  description: <%= Faker::Lorem.words number: 25 %>
   line: to_do
 
 do_exercise:
-  title: Nulla ullamcorper consectetur ex id
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas consectetur tincidunt magna. Sed justo lacus, ornare cursus nibh eget, finibus.
+  title: <%= Faker::Lorem.words number: 5 %>
+  description: <%= Faker::Lorem.words number: 25 %>
   line: to_do
+
+do_tasks:
+  title: <%= Faker::Lorem.words number: 5 %>
+  description: <%= Faker::Lorem.words number: 25 %>
+  line: doing
+
+do_more_tasks:
+  title: <%= Faker::Lorem.words number: 5 %>
+  description: <%= Faker::Lorem.words number: 25 %>
+  line: doing
+
+do_even_more_tasks:
+  title: <%= Faker::Lorem.words number: 5 %>
+  description: <%= Faker::Lorem.words number: 25 %>
+  line: doing

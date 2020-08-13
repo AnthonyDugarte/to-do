@@ -5,9 +5,15 @@
       </h2>
     </div>
 
+    <%= link_to 'New Lane', [:new, project, :line], remote: true, class: "px-6 block bg-gray-200" %>
+
     <div class="px-6">
       <%= link_to 'Edit', edit_project_path(project) %> |
       <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+    <div data-container="<%= Line.name %>" class="flex flex-1 overflow-x-auto">
+      <%= render project.lines, project: @project %>
     </div>
 
 </div>

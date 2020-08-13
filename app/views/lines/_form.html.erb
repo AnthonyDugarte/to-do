@@ -1,4 +1,6 @@
-<%= form_with(model: line, remote: true) do |form| %>
+<% project ||= nil %>
+
+<%= form_with(model: [project, line], remote: true) do |form| %>
   <% if line.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(line.errors.count, "error") %> prohibited this line from being saved:</h2>
@@ -15,6 +17,13 @@
     <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.text_field :name, class: "base-input-box" %>
   </div>
+
+  <% if project.nil? %>
+    <div class="mb-6 field">
+      <%= form.label :project_id, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.collection_select :project_id, Project.all, :id, :name, {}, class: "base-input-box" %>
+    </div>
+  <% end %>
 
   <div class="mb-6 actions">
     <%= form.submit class: "form__btn-submit" %>

@@ -1,8 +1,8 @@
-el = document.querySelector("[data-model=\"Task\"][data-id=\"<%= @task.id %>\"]")
+el = document.querySelector("[data-model=\"<%= Line.name %>\"][data-id=\"<%= @task.id %>\"]")
 
 if(el) {
     tmp_el = document.createElement("template")
-    tmp_el.innerHTML = "<%= j render(@task) %>"
+    tmp_el.innerHTML = "<%= j render(@task, line: @line, lines: @lines, project: @project) %>"
 
     el.parentElement.replaceChild(tmp_el.content.firstElementChild, el)
 }

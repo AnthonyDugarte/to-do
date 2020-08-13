@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_line
+  before_action :set_project, :set_line
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,18 +10,18 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = tasks_query.new(optional_task_params)
+    @task = tasks_query.new optional_task_params
   end
 
   def edit
   end
 
   def create
-    @task = tasks_query.new(task_params)
+    @task = tasks_query.new task_params
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to [@line, @task], notice: 'Task was successfully created.' }
+        format.html { redirect_to [@project, @line, @task], notice: 'Task was successfully created.' }
         format.js
         format.json { render :show, status: :created, location: @task }
       else
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to [@line, @task], notice: 'Task was successfully updated.' }
+        format.html { redirect_to [@project, @line, @task], notice: 'Task was successfully updated.' }
         format.js
         format.json { render :show, status: :ok, location: @task }
       else
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to [@line, :tasks], notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to [@project, @line, :tasks], notice: 'Task was successfully destroyed.' }
       format.js
       format.json { head :no_content }
     end
@@ -57,14 +57,23 @@ class TasksController < ApplicationController
 
   private
     def tasks_query
-      Task.where(*task_scoping_params)
+      q = Task.all
+      q = q.joins(:line).where(lines: params.permit(:project_id).to_h) if not params[:project_id].nil?
+      q = q.where(*params.permit(:line_id))
+
+      q
+    end
+    def line_query
+      Line.where(*params.permit(:project_id))
     end
 
+    def set_project
+      @project = Project.find(params[:project_id]) if not params[:project_id].nil?
+    end
     def set_line
-      @line = Line.find(params[:line_id]) if not params[:line_id].nil?
+      @lines = line_query.all
+      @line = @lines.find(params[:line_id]) if not params[:line_id].nil?
     end
-
-    # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = tasks_query.find(params[:id])
     end
@@ -83,9 +92,5 @@ class TasksController < ApplicationController
       _params = _params.except(:line_id) if not @line.nil?
 
       _params
-    end
-
-    def task_scoping_params
-      params.permit(:line_id)
     end
 end

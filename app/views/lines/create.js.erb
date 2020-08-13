@@ -1,7 +1,7 @@
-lines = document.getElementById("lines-container")
+lines = document.querySelector("[data-model=\"<%= Project.name %>\"][data-id=\"<%= @project&.id %>\"] [data-container=\"<%= Line.name %>\"]") || document.querySelector("[data-container=\"<%= Line.name %>\"]")
 
 tmp_el = document.createElement("template")
-tmp_el.innerHTML = "<%= j render(@line) %>"
+tmp_el.innerHTML = "<%= j render(@line, project: @project) %>"
 
 lines.appendChild(tmp_el.content.firstElementChild)
 

@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ProjectsTest < ApplicationSystemTestCase
   setup do
-    @project = projects(:one)
+    @project = projects(:lapa)
   end
 
   test "visiting the index" do
@@ -24,6 +24,8 @@ class ProjectsTest < ApplicationSystemTestCase
   test "updating a Project" do
     visit projects_url
 
+    click_link @project.name, match: :first
+
     within resource_selector(@project) do
       click_on "Edit", match: :first
     end
@@ -36,6 +38,9 @@ class ProjectsTest < ApplicationSystemTestCase
 
   test "destroying a Project" do
     visit projects_url
+
+    click_link @project.name, match: :first
+
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

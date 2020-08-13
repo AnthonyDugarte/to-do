@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy]
+  before_action :set_loaded_project, only: [:show]
 
   def index
     @projects = Project.all
@@ -53,6 +54,10 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+    end
+
+    def set_loaded_project
+      @project = Project.includes(:tasks).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

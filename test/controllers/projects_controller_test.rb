@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @project = projects(:one)
+    @project = projects(:lapa)
 
     @project.name = Faker::Lorem.word
   end

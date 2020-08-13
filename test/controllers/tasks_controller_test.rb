@@ -42,14 +42,6 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to url_for([@line, Task.last])
-  end
-
-  test "should create task for lane specified at url" do
-    assert_difference('Task.count') do
-      post url_for([@line, :tasks]), params: { task: { description: @task.description, title: @task.title } }
-    end
-
-    assert_redirected_to url_for([@line, Task.last])
     assert_equal @line.id, Task.last.line_id
   end
 
@@ -61,14 +53,6 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to url_for([@line, Task.last])
     assert_not @line.id == @line_2.id
     assert_equal @line.id, Task.last.line_id
-  end
-
-  test "should create task for especific lane" do
-    assert_difference('Task.count') do
-      post url_for([@line, :tasks]), params: { task: { description: @task.description, title: @task.title } }
-    end
-
-    assert_redirected_to url_for([@line, Task.last])
   end
 
   test "should show task" do

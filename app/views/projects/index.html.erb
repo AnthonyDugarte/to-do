@@ -4,6 +4,17 @@
 
 <%= link_to 'New Project', new_project_path %>
 
-<div id="lines-container">
-  <%= render @projects %>
-</div>
+<% @projects.each do |project| %>
+  <%= link_to project, "data-model": project.class.name, "data-id": project.id, class: "flex my-6 py-4 px-2 no-underline border border-gray-400 rounded shadow transform duration-500 transition hover:scale-105 hover:outline-none hover:shadow-outline" do %>
+    <span class="flex-1 font-semibold px-4"><%= project.name %></span>
+
+    <span class="px-2">
+      Lines: 
+      <span class="font-semibold"><%= project.lines.count %></span>
+    </span>
+    <span class="px-2">
+      Tasks: 
+      <span class="font-semibold"><%= project.tasks.count %></span>
+    </span>
+  <% end %>
+<% end %>

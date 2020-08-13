@@ -60,6 +60,7 @@ check [.ruby-version](.ruby-version) file.
 - [fixtures](https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html) (test's sample data)
 - [capybara](https://rubydoc.info/github/teamcapybara/capybara/master/Capybara) (testing)
   - [assertions](https://rubydoc.info/github/teamcapybara/capybara/master/Capybara/Minitest/Assertions)
+  - [wait for hxr](https://medium.com/doctolib/hunting-flaky-tests-2-waiting-for-ajax-bd76d79d9ee9)
 - Active Record
   - [Associations](https://guides.rubyonrails.org/association_basics.html)
   - [Querying](https://guides.rubyonrails.org/active_record_querying.html)

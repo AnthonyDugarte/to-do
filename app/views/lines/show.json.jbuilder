@@ -1,1 +1,1 @@
-json.partial! "lines/line", line: @line
+json.partial! "lines/line", line: @line, project: @project

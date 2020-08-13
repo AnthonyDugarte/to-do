@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Lines</h1>
-<%= link_to 'New Line', new_line_path, remote: true %>
+<%= link_to 'New Line', [:new, @project, :line], remote: true %>
 
-<div id="lines-container" class="flex flex-1 overflow-x-auto">
-    <%= render @lines %>
+<div data-container="<%= Line.name %>" class="flex flex-1 overflow-x-auto">
+    <%= render @lines, project: @project %>
 </div>
