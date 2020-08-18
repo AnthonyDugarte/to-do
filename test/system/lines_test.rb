@@ -31,7 +31,10 @@ class LinesTest < ApplicationSystemTestCase
 
   test "updating a Line" do
     visit lines_url
-    click_on "Edit", match: :first
+
+    within resource_selector(@line) do
+      click_on "Edit", match: :first
+    end
 
     name = Faker::Lorem.word
 

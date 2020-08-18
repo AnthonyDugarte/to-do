@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 
 html {
-    @apply min-h-screen flex;
+    @apply h-screen;
 }
 
 .base-input-box {
@@ -37,27 +37,41 @@ a {
     }
 }
 
-.form__btn-submit {
+.form__btn {
     @apply cursor-pointer
         transition
         duration-500
         transform
         shadow
-        bg-purple-500
         text-white
         font-bold
         py-2
         px-4
         rounded;
-    
+
     &:hover {
-        @apply scale-105
-            bg-purple-400;
+        @apply scale-105;
     }
 
     &:focus {
         @apply outline-none
             shadow-outline;
+    }
+}
+
+.form__btn-submit {
+    @apply bg-purple-500;
+
+    &:hover {
+        @apply bg-purple-400;
+    }
+}
+
+.form__btn-destroy {
+    @apply bg-red-500;
+
+    &:hover {
+        @apply bg-red-400;
     }
 }
 

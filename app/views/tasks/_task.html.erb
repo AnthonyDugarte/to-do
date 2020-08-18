@@ -5,7 +5,9 @@
   <div class="px-6 py-4">
     <div data-field="title" class="font-bold text-xl mb-2"><%= task.title %></div>
 
-    <div data-field="line_name" class="text-gray-700 text-base"><%= task.line.name %></div>
+    <% if line.nil? %>
+      <div data-field="line_name" class="text-gray-700 text-base"><%= task.line.name %></div>
+    <% end %>
 
     <p data-field="description" class="text-gray-700 text-base"><%= task.description %></p>
   </div>

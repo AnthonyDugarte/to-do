@@ -1,24 +1,24 @@
 do_tests:
-  title: <%= Faker::Lorem.words number: 5 %>
-  description: <%= Faker::Lorem.words number: 25 %>
+  title: <%= Faker::Lorem.words(number: 5).join(" ") %>
+  description: <%= Faker::Lorem.words(number: 25).join(" ") %>
   line: to_do
 
 do_exercise:
-  title: <%= Faker::Lorem.words number: 5 %>
-  description: <%= Faker::Lorem.words number: 25 %>
+  title: <%= Faker::Lorem.words(number: 5).join(" ") %>
+  description: <%= Faker::Lorem.words(number: 25).join(" ") %>
   line: to_do
 
 do_tasks:
-  title: <%= Faker::Lorem.words number: 5 %>
-  description: <%= Faker::Lorem.words number: 25 %>
+  title: <%= Faker::Lorem.words(number: 5).join(" ") %>
+  description: <%= Faker::Lorem.words(number: 25).join(" ") %>
   line: doing
 
 do_more_tasks:
-  title: <%= Faker::Lorem.words number: 5 %>
-  description: <%= Faker::Lorem.words number: 25 %>
+  title: <%= Faker::Lorem.words(number: 5).join(" ") %>
+  description: <%= Faker::Lorem.words(number: 25).join(" ") %>
   line: doing
 
 do_even_more_tasks:
-  title: <%= Faker::Lorem.words number: 5 %>
-  description: <%= Faker::Lorem.words number: 25 %>
+  title: <%= Faker::Lorem.words(number: 5).join(" ") %>
+  description: <%= Faker::Lorem.words(number: 25).join(" ") %>
   line: doing

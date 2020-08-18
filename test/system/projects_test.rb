@@ -18,7 +18,6 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "Create Project"
 
     assert_text "Project was successfully created"
-    click_on "Back"
   end
 
   test "updating a Project" do
@@ -41,8 +40,10 @@ class ProjectsTest < ApplicationSystemTestCase
 
     click_link @project.name, match: :first
 
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+    within resource_selector(@project) do
+      page.accept_confirm do
+        click_on "X", match: :first
+      end
     end
 
     assert_text "Project was successfully destroyed"

@@ -1,15 +1,12 @@
-<div data-model="<%= project.class.name %>" data-id="<%= project.id %>" class="flex flex-col flex-auto flex-shrink-0 border-l border-r border-gray-400 w-full">
-    <div class="px-6 py-4">
-      <h2 data-field="name" class="font-bold text-2xl">
+<div data-model="<%= project.class.name %>" data-id="<%= project.id %>" class="flex flex-col flex-auto flex-shrink-1 border-l border-r border-gray-400 w-full h-full">
+    <div class="px-6 py-4 flex items-center">
+      <h2 data-field="name" class="flex-1 text-2xl font-bold">
         <%= project.name %>
       </h2>
-    </div>
 
-    <%= link_to 'New Lane', [:new, project, :line], remote: true, class: "px-6 block bg-gray-200" %>
-
-    <div class="px-6">
-      <%= link_to 'Edit', edit_project_path(project) %> |
-      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'New Lane', [:new, project, :line], remote: true, class: "mx-2 px-6 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-submit" %>
+      <%= link_to 'Edit', edit_project_path(project), class: "mx-2 px-6 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-submit" %>
+      <%= link_to 'X', project, class: "mx-2 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-destroy", method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 
     <div data-container="<%= Line.name %>" class="flex flex-1 overflow-x-auto">

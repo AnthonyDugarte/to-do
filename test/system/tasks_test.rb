@@ -16,22 +16,27 @@ class TasksTest < ApplicationSystemTestCase
     visit tasks_url
     click_on "New Task"
 
-    fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
+    fill_in "Description", with: @task.description
+
     select @task.line.name, from: "Line"
+
     click_on "Create Task"
 
     assert_css resource_selector(Task.last)
   end
 
-  test "Creating a Task for line 1" do
+  test "Creating a Task for a line" do
     visit url_for([@line, :tasks])
 
     click_on "New Task"
 
-    fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
+    fill_in "Description", with: @task.description
+
     click_on "Create Task"
+
+    sleep(0.05) # Wait for ajax
 
     assert_css resource_selector(Task.last)
   end
@@ -58,7 +63,9 @@ class TasksTest < ApplicationSystemTestCase
 
   test "updating a Task" do
     visit tasks_url
-    click_on "Edit", match: :first
+    within resource_selector(@task) do
+      click_on "Edit", match: :first
+    end
 
     fill_in "Description", with: @task.description
     fill_in "Title", with: @task.title
