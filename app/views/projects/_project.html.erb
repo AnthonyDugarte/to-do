@@ -5,7 +5,7 @@
       </h2>
 
       <%= link_to 'New Lane', [:new, project, :line], remote: true, class: "mx-2 px-6 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-submit" %>
-      <%= link_to 'Edit', edit_project_path(project), class: "mx-2 px-6 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-submit" %>
+      <%= link_to 'Edit', edit_project_path(project), remote: true, class: "mx-2 px-6 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-submit" %>
       <%= link_to 'X', project, class: "mx-2 hover:text-white visited:text-white no-underline text-lg form__btn form__btn-destroy", method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 

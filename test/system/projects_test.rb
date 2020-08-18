@@ -28,11 +28,13 @@ class ProjectsTest < ApplicationSystemTestCase
     within resource_selector(@project) do
       click_on "Edit", match: :first
     end
+    
+    name = Faker::Lorem.word
 
-    fill_in "Name", with: @project.name
+    fill_in "Name", with: name
     click_on "Update Project"
 
-    assert_text "Project was successfully updated"
+    assert_selector "#{resource_selector @project} [data-field=\"name\"]", text: name, match: :first
   end
 
   test "destroying a Project" do
