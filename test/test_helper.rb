@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+require_relative('../config/environment')
+require('rails/test_help')
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -11,7 +11,7 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 
-  def resource_selector resource
+  def resource_selector(resource)
     "[data-model=\"#{resource.class.name}\"][data-id=\"#{resource.id}\"]"
   end
 end

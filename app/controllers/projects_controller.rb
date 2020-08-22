@@ -1,20 +1,18 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:edit, :update, :destroy]
+  before_action :set_project, only: %i[edit update destroy]
   before_action :set_loaded_project, only: [:show]
 
   def index
     @projects = Project.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @project = Project.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @project = Project.new(project_params)
@@ -53,17 +51,18 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    def set_loaded_project
-      @project = Project.includes(:tasks).find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:name)
-    end
+  def set_loaded_project
+    @project = Project.includes(:tasks).find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def project_params
+    params.require(:project).permit(:name)
+  end
 end

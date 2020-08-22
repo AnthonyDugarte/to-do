@@ -1,20 +1,18 @@
 class LinesController < ApplicationController
   before_action :set_project
-  before_action :set_line, only: [:show, :edit, :update, :destroy]
+  before_action :set_line, only: %i[show edit update destroy]
 
   def index
     @lines = line_query.includes(:tasks).all
   end
 
-  def show
-  end
+  def show; end
 
   def new
-    @line = line_query.new optional_line_params
+    @line = line_query.new(optional_line_params)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @line = line_query.new(line_params)
@@ -56,36 +54,35 @@ class LinesController < ApplicationController
   end
 
   private
-    def line_query
-      Line.where(*line_scoping_params)
-    end
 
-    def set_project
-      @project = Project.find(params[:project_id]) if not params[:project_id].nil?
-    end
+  def line_query
+    Line.where(*line_scoping_params)
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_line
-      @line = line_query.find(params[:id])
-    end
+  def set_project
+    @project = Project.find(params[:project_id]) unless params[:project_id].nil?
+  end
 
-    def optional_line_params
-      begin
-        line_params
-      rescue ActionController::ParameterMissing
-        ActionController::Parameters.new
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_line
+    @line = line_query.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def line_params
-      _params = params.require(:line).permit(:name, :project_id)
-      _params = _params.except(:project_id) if not @project.nil?
+  def optional_line_params
+    line_params
+  rescue ActionController::ParameterMissing
+    ActionController::Parameters.new
+  end
 
-      _params
-    end
+  # Only allow a list of trusted parameters through.
+  def line_params
+    _params = params.require(:line).permit(:name, :project_id)
+    _params = _params.except(:project_id) unless @project.nil?
 
-    def line_scoping_params
-      params.permit(:project_id)
-    end
+    _params
+  end
+
+  def line_scoping_params
+    params.permit(:project_id)
+  end
 end

@@ -1,1 +1,1 @@
-json.array! @lines, partial: "lines/line", as: :line, project: @project
+json.array!(@lines, partial: 'lines/line', as: :line, project: @project)

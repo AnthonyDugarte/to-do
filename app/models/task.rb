@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
-    validates :title, presence: true
+  validates :title, presence: true
 
-    belongs_to :line
-    has_one :project, through: :line
+  belongs_to :line
+  has_one :project, through: :line
 end

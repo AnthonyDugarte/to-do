@@ -65,3 +65,31 @@ check [.ruby-version](.ruby-version) file.
   - [Associations](https://guides.rubyonrails.org/association_basics.html)
   - [Querying](https://guides.rubyonrails.org/active_record_querying.html)
 - [Js](https://guides.rubyonrails.org/working_with_javascript_in_rails.html) (in rails)
+
+## Run in production mode
+
+```bash
+rails assets:clobber && rails assets:clean
+
+RAILS_ENV=production rails db:prepare
+RAILS_ENV=production rails assets:precompile
+RAILS_SERVE_STATIC_FILES=true rails s -e production
+```
+
+## Intellisense
+
+```bash
+bundle install
+```
+
+### Rails through solargraph
+
+```bash
+bundle exec solargraph bundle
+```
+
+## Format
+
+```bash
+bundle exec rubocop -a
+```
